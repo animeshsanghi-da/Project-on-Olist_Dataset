@@ -1,0 +1,491 @@
+EXECUTION LOG: CLEANED DATA VALIDATION:
+
+Output:-
+
+
+Process: Libraries imported successfully.
+
+Process: Attempting to connect to the database...
+INFO: Successfully connected to the MySQL database.
+Process Complete: Database connection engine created.
+
+
+Process: Defining the list of tables to extract...   
+Process: 7 tables identified for extraction.
+
+Process: Starting data extraction from MySQL...      
+  -> Extracting table: customers_cleaned...
+  -> Successfully loaded 'customers_cleaned' into memory.
+  -> Extracting table: orders_cleaned...
+  -> Successfully loaded 'orders_cleaned' into memory.
+  -> Extracting table: products_cleaned...
+  -> Successfully loaded 'products_cleaned' into memory.
+  -> Extracting table: order_items_cleaned...
+  -> Successfully loaded 'order_items_cleaned' into memory.
+  -> Extracting table: payments_cleaned...
+  -> Successfully loaded 'payments_cleaned' into memory.
+  -> Extracting table: reviews_cleaned...
+  -> Successfully loaded 'reviews_cleaned' into memory.
+  -> Extracting table: master_analytical_view...
+  -> Successfully loaded 'master_analytical_view' into memory.
+Process: All tables extracted successfully.
+
+Process: Closing database connection...
+Process: Database connection closed.
+
+Process: Starting data diagnostics generation...
+
+
+=======================================================
+          DIAGNOSTICS FOR: CUSTOMERS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (customers_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 99441 entries, 0 to 99440
+Data columns (total 5 columns):
+ #   Column                    Non-Null Count  Dtype
+---  ------                    --------------  -----
+ 0   customer_id               99441 non-null  str  
+ 1   customer_unique_id        99441 non-null  str  
+ 2   customer_zip_code_prefix  99441 non-null  str  
+ 3   customer_city             99441 non-null  str  
+ 4   customer_state            99441 non-null  str  
+dtypes: str(5)
+memory usage: 3.8 MB
+--- customers_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (customers_cleaned.describe) ---
+                             customer_id  ... customer_state
+count                              99441  ...          99441
+unique                             99441  ...             27
+top     00012a2ce6f8dcda20d059ce98491703  ...             SP
+freq                                   1  ...          41746
+
+[4 rows x 5 columns]
+--- customers_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (customers_cleaned).isnull().sum() ---
+customer_id                 0
+customer_unique_id          0
+customer_zip_code_prefix    0
+customer_city               0
+customer_state              0
+dtype: int64
+--- customers_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for customers_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: ORDERS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (orders_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 96476 entries, 0 to 96475
+Data columns (total 16 columns):
+ #   Column                         Non-Null Count  Dtype
+---  ------                         --------------  -----
+ 0   order_id                       96476 non-null  str
+ 1   customer_id                    96476 non-null  str
+ 2   order_status                   96476 non-null  str
+ 3   order_purchase_timestamp       96476 non-null  datetime64[us]
+ 4   order_approved_at              96476 non-null  datetime64[us]
+ 5   order_delivered_carrier_date   96476 non-null  datetime64[us]
+ 6   order_delivered_customer_date  96476 non-null  datetime64[us]
+ 7   order_estimated_delivery_date  96476 non-null  datetime64[us]
+ 8   purchase_year                  96476 non-null  int64
+ 9   purchase_month                 96476 non-null  int64
+ 10  purchase_day_of_week           96476 non-null  str
+ 11  purchase_hour                  96476 non-null  int64
+ 12  is_weekend                     96476 non-null  int64
+ 13  delivery_time_days             96476 non-null  int64
+ 14  delivery_delay_days            96476 non-null  int64
+ 15  is_late_delivery               96476 non-null  int64
+dtypes: datetime64[us](5), int64(7), str(4)
+memory usage: 11.8 MB
+--- orders_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (orders_cleaned.describe) ---
+         order_purchase_timestamp  ... is_late_delivery
+count                       96476  ...     96476.000000
+mean   2018-01-01 22:44:47.156474  ...         0.067737
+min           2016-09-15 12:16:38  ...         0.000000
+25%           2017-09-14 08:10:58  ...         0.000000
+50%           2018-01-20 19:21:46  ...         0.000000
+75%    2018-05-05 18:28:21.750000  ...         0.000000
+max           2018-08-29 15:00:37  ...         1.000000
+std                           NaN  ...         0.251295
+
+[8 rows x 12 columns]
+--- orders_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (orders_cleaned).isnull().sum() ---
+order_id                         0
+customer_id                      0
+order_status                     0
+order_purchase_timestamp         0
+order_approved_at                0
+order_delivered_carrier_date     0
+order_delivered_customer_date    0
+order_estimated_delivery_date    0
+purchase_year                    0
+purchase_month                   0
+purchase_day_of_week             0
+purchase_hour                    0
+is_weekend                       0
+delivery_time_days               0
+delivery_delay_days              0
+is_late_delivery                 0
+dtype: int64
+--- orders_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for orders_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: PRODUCTS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (products_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 32945 entries, 0 to 32944
+Data columns (total 10 columns):
+ #   Column                      Non-Null Count  Dtype
+---  ------                      --------------  -----
+ 0   product_id                  32945 non-null  str
+ 1   product_category_name       32945 non-null  str
+ 2   product_name_lenght         32945 non-null  float64
+ 3   product_description_lenght  32945 non-null  float64
+ 4   product_photos_qty          32945 non-null  float64
+ 5   product_weight_g            32945 non-null  float64
+ 6   product_length_cm           32945 non-null  float64
+ 7   product_height_cm           32945 non-null  float64
+ 8   product_width_cm            32945 non-null  float64
+ 9   product_volume_cm3          32945 non-null  float64
+dtypes: float64(8), str(2)
+memory usage: 2.5 MB
+--- products_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (products_cleaned.describe) ---
+       product_name_lenght  ...  product_volume_cm3
+count         32945.000000  ...        32945.000000
+mean             47.580149  ...        16563.375990
+std              12.069921  ...        27058.605145
+min               0.000000  ...          168.000000
+25%              41.000000  ...         2880.000000
+50%              51.000000  ...         6840.000000
+75%              57.000000  ...        18480.000000
+max              76.000000  ...       296208.000000
+
+[8 rows x 8 columns]
+--- products_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (products_cleaned).isnull().sum() ---
+product_id                    0
+product_category_name         0
+product_name_lenght           0
+product_description_lenght    0
+product_photos_qty            0
+product_weight_g              0
+product_length_cm             0
+product_height_cm             0
+product_width_cm              0
+product_volume_cm3            0
+dtype: int64
+--- products_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for products_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: ORDER_ITEMS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (order_items_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 112650 entries, 0 to 112649
+Data columns (total 9 columns):
+ #   Column               Non-Null Count   Dtype
+---  ------               --------------   -----
+ 0   order_id             112650 non-null  str
+ 1   order_item_id        112650 non-null  int64
+ 2   product_id           112650 non-null  str
+ 3   seller_id            112650 non-null  str
+ 4   shipping_limit_date  112650 non-null  datetime64[us]
+ 5   price                112650 non-null  float64
+ 6   freight_value        112650 non-null  float64
+ 7   total_item_value     112650 non-null  float64
+ 8   freight_ratio        112650 non-null  float64
+dtypes: datetime64[us](1), float64(4), int64(1), str(3)
+memory usage: 7.7 MB
+--- order_items_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (order_items_cleaned.describe) ---
+       order_item_id         shipping_limit_date  ...  total_item_value  freight_ratiocount  112650.000000                      112650  ...     112650.000000  112650.000000mean        1.197834  2018-01-07 15:36:52.192685  ...        140.644059       0.213364min         1.000000         2016-09-19 00:15:34  ...          6.080000       0.00000025%         1.000000  2017-09-20 20:57:27.500000  ...         55.220000       0.11819250%         1.000000         2018-01-26 13:59:35  ...         92.320000       0.18788775%         1.000000  2018-05-10 14:34:00.750000  ...        157.937500       0.282144max        21.000000         2020-04-09 22:35:08  ...       6929.310000       0.963283std         0.705124                         NaN  ...        190.724394       0.129498
+[8 rows x 6 columns]
+--- order_items_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (order_items_cleaned).isnull().sum() ---
+order_id               0
+order_item_id          0
+product_id             0
+seller_id              0
+shipping_limit_date    0
+price                  0
+freight_value          0
+total_item_value       0
+freight_ratio          0
+dtype: int64
+--- order_items_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for order_items_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: PAYMENTS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (payments_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 103877 entries, 0 to 103876
+Data columns (total 5 columns):
+ #   Column                Non-Null Count   Dtype
+---  ------                --------------   -----
+ 0   order_id              103877 non-null  str
+ 1   payment_sequential    103877 non-null  int64
+ 2   payment_type          103877 non-null  str
+ 3   payment_installments  103877 non-null  float64
+ 4   payment_value         103877 non-null  float64
+dtypes: float64(2), int64(1), str(2)
+memory usage: 4.0 MB
+--- payments_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (payments_cleaned.describe) ---
+       payment_sequential  payment_installments  payment_value
+count       103877.000000         103877.000000  103877.000000
+mean             1.092340              2.853509     154.113732
+std              0.704312              2.687112     217.498767
+min              1.000000              0.000000       0.010000
+25%              1.000000              1.000000      56.820000
+50%              1.000000              1.000000     100.000000
+75%              1.000000              4.000000     171.840000
+max             29.000000             24.000000   13664.100000
+--- payments_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (payments_cleaned).isnull().sum() ---
+order_id                0
+payment_sequential      0
+payment_type            0
+payment_installments    0
+payment_value           0
+dtype: int64
+--- payments_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for payments_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: REVIEWS_CLEANED
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (reviews_cleaned.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 99223 entries, 0 to 99222
+Data columns (total 9 columns):
+ #   Column                     Non-Null Count  Dtype
+---  ------                     --------------  -----
+ 0   review_id                  99223 non-null  str
+ 1   order_id                   99223 non-null  str
+ 2   review_score               99223 non-null  float64
+ 3   review_comment_title       11566 non-null  str
+ 4   review_comment_message     40950 non-null  str
+ 5   review_creation_date       99223 non-null  datetime64[us]
+ 6   review_answer_timestamp    99223 non-null  datetime64[us]
+ 7   review_response_time_days  99223 non-null  int64
+ 8   has_text_review            99223 non-null  int64
+dtypes: datetime64[us](2), float64(1), int64(2), str(4)
+memory usage: 6.8 MB
+--- reviews_cleaned.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (reviews_cleaned.describe) ---
+       review_score  ... has_text_review
+count  99223.000000  ...    99223.000000
+mean       4.086421  ...        0.412707
+min        1.000000  ...        0.000000
+25%        4.000000  ...        0.000000
+50%        5.000000  ...        0.000000
+75%        5.000000  ...        1.000000
+max        5.000000  ...        1.000000
+std        1.347586  ...        0.492323
+
+[8 rows x 5 columns]
+--- reviews_cleaned.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (reviews_cleaned).isnull().sum() ---
+review_id                        0
+order_id                         0
+review_score                     0
+review_comment_title         87657
+review_comment_message       58273
+review_creation_date             0
+review_answer_timestamp          0
+review_response_time_days        0
+has_text_review                  0
+dtype: int64
+--- reviews_cleaned.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for reviews_cleaned
+
+
+
+=======================================================
+          DIAGNOSTICS FOR: MASTER_ANALYTICAL_VIEW
+=======================================================
+
+--- 1. DATA TYPES & NON-NULL COUNTS (master_analytical_view.info) ---
+<class 'pandas.DataFrame'>
+RangeIndex: 110167 entries, 0 to 110166
+Data columns (total 43 columns):
+ #   Column                         Non-Null Count   Dtype
+---  ------                         --------------   -----
+ 0   order_id                       110167 non-null  str
+ 1   customer_id                    110167 non-null  str
+ 2   order_status                   110167 non-null  str
+ 3   order_purchase_timestamp       110167 non-null  datetime64[us]
+ 4   order_approved_at              110167 non-null  datetime64[us]
+ 5   order_delivered_carrier_date   110167 non-null  datetime64[us]
+ 6   order_delivered_customer_date  110167 non-null  datetime64[us]
+ 7   order_estimated_delivery_date  110167 non-null  datetime64[us]
+ 8   purchase_year                  110167 non-null  int64
+ 9   purchase_month                 110167 non-null  int64
+ 10  purchase_day_of_week           110167 non-null  str
+ 11  purchase_hour                  110167 non-null  int64
+ 12  is_weekend                     110167 non-null  int64
+ 13  delivery_time_days             110167 non-null  int64
+ 14  delivery_delay_days            110167 non-null  int64
+ 15  is_late_delivery               110167 non-null  int64
+ 16  customer_unique_id             110167 non-null  str
+ 17  customer_zip_code_prefix       110167 non-null  str
+ 18  customer_city                  110167 non-null  str
+ 19  customer_state                 110167 non-null  str
+ 20  total_payment_value            110167 non-null  float64
+ 21  payment_installments           110167 non-null  float64
+ 22  payment_type                   110167 non-null  str
+ 23  order_item_id                  110167 non-null  int64
+ 24  product_id                     110167 non-null  str
+ 25  seller_id                      110167 non-null  str
+ 26  shipping_limit_date            110167 non-null  datetime64[us]
+ 27  price                          110167 non-null  float64
+ 28  freight_value                  110167 non-null  float64
+ 29  total_item_value               110167 non-null  float64
+ 30  freight_ratio                  110167 non-null  float64
+ 31  product_category_name          110167 non-null  str
+ 32  product_name_lenght            110167 non-null  float64
+ 33  product_description_lenght     110167 non-null  float64
+ 34  product_photos_qty             110167 non-null  float64
+ 35  product_weight_g               110167 non-null  float64
+ 36  product_length_cm              110167 non-null  float64
+ 37  product_height_cm              110167 non-null  float64
+ 38  product_width_cm               110167 non-null  float64
+ 39  product_volume_cm3             110167 non-null  float64
+ 40  review_score                   109338 non-null  float64
+ 41  has_text_review                109338 non-null  float64
+ 42  review_response_time_days      109338 non-null  float64
+dtypes: datetime64[us](6), float64(17), int64(8), str(12)
+memory usage: 36.1 MB
+--- master_analytical_view.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (master_analytical_view.describe) ---
+         order_purchase_timestamp  ... review_response_time_days
+count                      110167  ...             109338.000000
+mean   2018-01-02 02:57:00.179509  ...                  2.575879
+min           2016-10-03 09:44:50  ...                  0.000000
+25%           2017-09-15 09:04:01  ...                  1.000000
+50%           2018-01-21 10:15:13  ...                  1.000000
+75%           2018-05-05 15:25:31  ...                  3.000000
+max           2018-08-29 15:00:37  ...                518.000000
+std                           NaN  ...                  9.564733
+
+[8 rows x 31 columns]
+--- master_analytical_view.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (master_analytical_view).isnull().sum() ---
+order_id                           0
+customer_id                        0
+order_status                       0
+order_purchase_timestamp           0
+order_approved_at                  0
+order_delivered_carrier_date       0
+order_delivered_customer_date      0
+order_estimated_delivery_date      0
+purchase_year                      0
+purchase_month                     0
+purchase_day_of_week               0
+purchase_hour                      0
+is_weekend                         0
+delivery_time_days                 0
+delivery_delay_days                0
+is_late_delivery                   0
+customer_unique_id                 0
+customer_zip_code_prefix           0
+customer_city                      0
+customer_state                     0
+total_payment_value                0
+payment_installments               0
+payment_type                       0
+order_item_id                      0
+product_id                         0
+seller_id                          0
+shipping_limit_date                0
+price                              0
+freight_value                      0
+total_item_value                   0
+freight_ratio                      0
+product_category_name              0
+product_name_lenght                0
+product_description_lenght         0
+product_photos_qty                 0
+product_weight_g                   0
+product_length_cm                  0
+product_height_cm                  0
+product_width_cm                   0
+product_volume_cm3                 0
+review_score                     829
+has_text_review                  829
+review_response_time_days        829
+dtype: int64
+--- master_analytical_view.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for master_analytical_view
+
+
+Process 4/4 Complete: All diagnostics finished.
+
+--- SCRIPT EXECUTION FULLY COMPLETE ---
+
+
+
+
+=============================================================================
+👨‍💻 Author: Animesh Sanghi
+=============================================================================
+Title:    Data Analyst | MBA '28 (Analytics & Data Science) MUJ
+Phone:    9406570600
+Email:    animeshsanghi.da@gmail.com
+LinkedIn: https://www.linkedin.com/in/animeshsanghi-da/
+GitHub:   https://github.com/animeshsanghi-da
+=============================================================================

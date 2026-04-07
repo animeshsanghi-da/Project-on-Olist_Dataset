@@ -1,0 +1,26 @@
+# Environment Variables
+.env
+
+# Python Cache
+__pycache__/
+*.pyc
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Data Files (If you have raw CSVs stored locally)
+*.csv
+
+# OS generated files
+Thumbs.db
+
+
+# =============================================================================
+# 👨‍💻 Author: Animesh Sanghi
+# =============================================================================
+# Title:    Data Analyst | MBA '28 (Analytics & Data Science) MUJ
+# Phone:    9406570600
+# Email:    animeshsanghi.da@gmail.com
+# LinkedIn: https://www.linkedin.com/in/animeshsanghi-da/
+# GitHub:   https://github.com/animeshsanghi-da
+# =============================================================================

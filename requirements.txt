@@ -1,0 +1,25 @@
+# ANACONDA ENVIRONMENT DEPENDENCIES
+# -------------------------------------------------------
+# This file may be used to create an environment using:
+# $ conda create --name <env> --file <this file>
+# platform: win-64
+# created-by: Author: Animesh Sanghi
+pandas
+numpy
+matplotlib
+seaborn
+scikit-learn
+mysql-connector-python
+SQLAlchemy
+jupyter
+python-dotenv
+
+# =============================================================================
+# 👨‍💻 Author: Animesh Sanghi
+# =============================================================================
+# Title:    Data Analyst | MBA '28 (Analytics & Data Science) MUJ
+# Phone:    9406570600
+# Email:    animeshsanghi.da@gmail.com
+# LinkedIn: https://www.linkedin.com/in/animeshsanghi-da/
+# GitHub:   https://github.com/animeshsanghi-da
+# =============================================================================

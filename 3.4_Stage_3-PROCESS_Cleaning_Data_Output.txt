@@ -1,0 +1,113 @@
+EXECUTION LOG: DATA CLEANING:
+
+Output:-
+
+
+**************************************** 
+0. DATABASE CONNECTION SETTINGS
+ ****************************************
+INFO: Successfully connected to the MySQL database.
+Process 1/4 Complete: Database connection engine created.
+
+****************************************
+1. DATA LOADING AND INITIAL CLEANING
+ ****************************************
+Process started: Loading tables from MySQL database...
+  -> Fetching table: customers...
+  -> Successfully loaded customers (99441 rows).
+  -> Fetching table: orders...
+  -> Successfully loaded orders (99441 rows).
+  -> Fetching table: products...
+  -> Successfully loaded products (32951 rows).
+  -> Fetching table: order_items...
+  -> Successfully loaded order_items (112650 rows).
+  -> Fetching table: payments...
+  -> Successfully loaded payments (103886 rows).
+  -> Fetching table: reviews...
+  -> Successfully loaded reviews (99223 rows).
+Process complete: All tables loaded successfully.
+
+Process started: Extracting all dataframes for cleaning...
+Process complete: All dataframes extracted.
+
+Process started: Cleaning missing delivery and approval dates in 'orders'...
+Process complete: Orders cleaned. New count: 96476.
+
+Process started: Cleaning missing metrics and dimensions in 'products'...
+Process complete: Products cleaned. New count: 32949.
+
+Process started: Standardizing empty strings in 'reviews'...
+Process complete: Empty strings converted to NaN in reviews.
+
+****************************************
+2. CORRECTING DATA TYPES
+ ****************************************
+Process started: Converting date and categorical columns across all tables...
+Process complete: All data types standardized.
+
+****************************************
+3. CREATING NEW VARIABLES
+ ****************************************
+Process started: Engineering temporal features in 'orders'...
+Process complete: Order temporal features generated.
+
+Process started: Engineering volume features in 'products'...
+Process complete: Product volume generated.
+
+Process started: Engineering pricing metrics in 'order_items'...
+Process complete: Pricing metrics generated.
+
+Process started: Engineering review behaviors in 'reviews'...
+Process complete: Review features generated.
+
+****************************************
+4. DUPLICATE AND OUTLIERS REMOVAL
+ ****************************************
+Process started: Removing duplicates across all tables...
+Process complete: Duplicates removed.
+
+Process started: Removing outliers and logical impossibilities...
+Process complete: Outliers removed.
+
+****************************************
+5. DATA AGGREGATION AND MERGING
+ ****************************************
+Process started: Aggregating payments by order...
+  Don't worry! This may take longer than expected.
+Process complete: Payments aggregated.
+
+Process started: Building the Master Analytical DataFrame...
+Process started: Adding review scores to Master DataFrame...
+Process complete: Master DataFrame created. Total rows for analysis: 110167
+
+****************************************
+6. EXPORTING TABLES BACK TO MySQL
+ ****************************************
+Process started: Sanitizing data types for MySQL compatibility...
+Process complete: Data types sanitized.
+
+Process started: Exporting cleaned tables to database...
+  Don't worry! This may take longer than expected.
+  -> Exporting 'customers_cleaned'...
+  -> Exporting 'orders_cleaned'...
+  -> Exporting 'products_cleaned'...
+  -> Exporting 'order_items_cleaned'...
+  -> Exporting 'payments_cleaned'...
+  -> Exporting 'reviews_cleaned'...
+  -> Exporting 'master_analytical_view'...
+Process complete: All data exported successfully.
+
+FINAL PROCESS: Database connection engine disposed. Pipeline complete.
+
+
+
+
+=============================================================================
+👨‍💻 Author: Animesh Sanghi
+=============================================================================
+Title:    Data Analyst | MBA '28 (Analytics & Data Science) MUJ
+Phone:    9406570600
+Email:    animeshsanghi.da@gmail.com
+LinkedIn: https://www.linkedin.com/in/animeshsanghi-da/
+GitHub:   https://github.com/animeshsanghi-da
+=============================================================================

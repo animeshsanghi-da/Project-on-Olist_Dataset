@@ -1,0 +1,356 @@
+EXECUTION LOG: RAW DATA DIAGNOSIS:
+
+Output:-
+
+
+Process 1/4: Initializing database connection...
+INFO: Successfully connected to the MySQL database.
+Process 1/4 Complete: Database connection engine created.   
+
+Process 2/4: Preparing table list...
+Process 2/4 Complete: Table list and storage dictionary prepared.
+
+Process 3/4: Fetching data from MySQL...
+  -> Fetching table: 'customers'...
+  -> Successfully loaded 'customers' into memory.
+  -> Fetching table: 'orders'...
+  -> Successfully loaded 'orders' into memory.
+  -> Fetching table: 'products'...
+  -> Successfully loaded 'products' into memory.
+  -> Fetching table: 'order_items'...
+  -> Successfully loaded 'order_items' into memory.
+  -> Fetching table: 'payments'...
+  -> Successfully loaded 'payments' into memory.
+  -> Fetching table: 'reviews'...
+  -> Successfully loaded 'reviews' into memory.
+Process 3/4 Complete: All tables successfully loaded into the 'dfs' dictionary.
+
+Process 4/4: Running diagnostics on all loaded tables...    
+
+Process: Starting data diagnostics generation...
+
+
+=======================================================     
+          DIAGNOSTICS FOR: CUSTOMERS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (customers.info) ---    
+<class 'pandas.DataFrame'>
+RangeIndex: 99441 entries, 0 to 99440
+Data columns (total 5 columns):
+ #   Column                    Non-Null Count  Dtype
+---  ------                    --------------  -----
+ 0   customer_id               99441 non-null  str  
+ 1   customer_unique_id        99441 non-null  str  
+ 2   customer_zip_code_prefix  99441 non-null  int64
+ 3   customer_city             99441 non-null  str  
+ 4   customer_state            99441 non-null  str  
+dtypes: int64(1), str(4)
+memory usage: 3.8 MB
+--- customers.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (customers.describe) ---
+       customer_zip_code_prefix
+count              99441.000000
+mean               35137.474583
+std                29797.938996
+min                 1003.000000
+25%                11347.000000
+50%                24416.000000
+75%                58900.000000
+max                99990.000000
+--- customers.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (customers).isnull().sum() ---  
+customer_id                 0
+customer_unique_id          0
+customer_zip_code_prefix    0
+customer_city               0
+customer_state              0
+dtype: int64
+--- customers.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for customers
+
+
+
+=======================================================     
+          DIAGNOSTICS FOR: ORDERS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (orders.info) ---       
+<class 'pandas.DataFrame'>
+RangeIndex: 99441 entries, 0 to 99440
+Data columns (total 8 columns):
+ #   Column                         Non-Null Count  Dtype   
+
+---  ------                         --------------  -----   
+
+ 0   order_id                       99441 non-null  str     
+
+ 1   customer_id                    99441 non-null  str     
+
+ 2   order_status                   99441 non-null  str     
+
+ 3   order_purchase_timestamp       99441 non-null  datetime64[us]
+ 4   order_approved_at              99281 non-null  datetime64[us]
+ 5   order_delivered_carrier_date   97658 non-null  datetime64[us]
+ 6   order_delivered_customer_date  96476 non-null  datetime64[us]
+ 7   order_estimated_delivery_date  99441 non-null  datetime64[us]
+dtypes: datetime64[us](5), str(3)
+memory usage: 6.1 MB
+--- orders.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (orders.describe) ---
+         order_purchase_timestamp  ... order_estimated_delivery_date
+count                       99441  ...
+   99441
+mean   2017-12-31 08:43:12.776581  ...    2018-01-24 03:08:37.730111
+min           2016-09-04 21:15:19  ...           2016-09-30 
+00:00:00
+25%           2017-09-12 14:46:19  ...           2017-10-03 
+00:00:00
+50%           2018-01-18 23:04:36  ...           2018-02-15 
+00:00:00
+75%           2018-05-04 15:42:16  ...           2018-05-25 
+00:00:00
+max           2018-10-17 17:30:18  ...           2018-11-12 
+00:00:00
+
+[7 rows x 5 columns]
+--- orders.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (orders).isnull().sum() ---     
+order_id                            0
+customer_id                         0
+order_status                        0
+order_purchase_timestamp            0
+order_approved_at                 160
+order_delivered_carrier_date     1783
+order_delivered_customer_date    2965
+order_estimated_delivery_date       0
+dtype: int64
+--- orders.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for orders
+
+
+
+=======================================================     
+          DIAGNOSTICS FOR: PRODUCTS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (products.info) ---     
+<class 'pandas.DataFrame'>
+RangeIndex: 32951 entries, 0 to 32950
+Data columns (total 9 columns):
+ #   Column                      Non-Null Count  Dtype      
+---  ------                      --------------  -----      
+ 0   product_id                  32951 non-null  str        
+ 1   product_category_name       32951 non-null  str        
+ 2   product_name_lenght         32341 non-null  float64    
+ 3   product_description_lenght  32341 non-null  float64    
+ 4   product_photos_qty          32341 non-null  float64    
+ 5   product_weight_g            32949 non-null  float64    
+ 6   product_length_cm           32949 non-null  float64    
+ 7   product_height_cm           32949 non-null  float64    
+ 8   product_width_cm            32949 non-null  float64    
+dtypes: float64(7), str(2)
+memory usage: 2.3 MB
+--- products.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (products.describe) ---
+       product_name_lenght  ...  product_width_cm
+count         32341.000000  ...      32949.000000
+mean             48.476949  ...         23.196728
+std              10.245741  ...         12.079047
+min               5.000000  ...          6.000000
+25%              42.000000  ...         15.000000
+50%              51.000000  ...         20.000000
+75%              57.000000  ...         30.000000
+max              76.000000  ...        118.000000
+
+[8 rows x 7 columns]
+--- products.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (products).isnull().sum() ---   
+product_id                      0
+product_category_name           0
+product_name_lenght           610
+product_description_lenght    610
+product_photos_qty            610
+product_weight_g                2
+product_length_cm               2
+product_height_cm               2
+product_width_cm                2
+dtype: int64
+--- products.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for products
+
+
+
+=======================================================     
+          DIAGNOSTICS FOR: ORDER_ITEMS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (order_items.info) ---  
+<class 'pandas.DataFrame'>
+RangeIndex: 112650 entries, 0 to 112649
+Data columns (total 7 columns):
+ #   Column               Non-Null Count   Dtype
+---  ------               --------------   -----
+ 0   order_id             112650 non-null  str
+ 1   order_item_id        112650 non-null  int64
+ 2   product_id           112650 non-null  str
+ 3   seller_id            112650 non-null  str
+ 4   shipping_limit_date  112650 non-null  datetime64[us]   
+ 5   price                112650 non-null  float64
+ 6   freight_value        112650 non-null  float64
+dtypes: datetime64[us](1), float64(2), int64(1), str(3)     
+memory usage: 6.0 MB
+--- order_items.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (order_items.describe) ---       
+       order_item_id  ...  freight_value
+count  112650.000000  ...  112650.000000
+mean        1.197834  ...      19.990320
+min         1.000000  ...       0.000000
+25%         1.000000  ...      13.080000
+50%         1.000000  ...      16.260000
+75%         1.000000  ...      21.150000
+max        21.000000  ...     409.680000
+std         0.705124  ...      15.806405
+
+[8 rows x 4 columns]
+--- order_items.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (order_items).isnull().sum() ---order_id               0
+order_item_id          0
+product_id             0
+seller_id              0
+shipping_limit_date    0
+price                  0
+freight_value          0
+dtype: int64
+--- order_items.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for order_items
+
+
+
+=======================================================     
+          DIAGNOSTICS FOR: PAYMENTS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (payments.info) ---     
+<class 'pandas.DataFrame'>
+RangeIndex: 103886 entries, 0 to 103885
+Data columns (total 5 columns):
+ #   Column                Non-Null Count   Dtype
+---  ------                --------------   -----
+ 0   order_id              103886 non-null  str
+ 1   payment_sequential    103886 non-null  int64
+ 2   payment_type          103886 non-null  str
+ 3   payment_installments  103886 non-null  int64
+ 4   payment_value         103886 non-null  float64
+dtypes: float64(1), int64(2), str(2)
+memory usage: 4.0 MB
+--- payments.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (payments.describe) ---
+       payment_sequential  ...  payment_value
+count       103886.000000  ...  103886.000000
+mean             1.092679  ...     154.100380
+std              0.706584  ...     217.494064
+min              1.000000  ...       0.000000
+25%              1.000000  ...      56.790000
+50%              1.000000  ...     100.000000
+75%              1.000000  ...     171.837500
+max             29.000000  ...   13664.080000
+
+[8 rows x 3 columns]
+--- payments.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (payments).isnull().sum() ---   
+order_id                0
+payment_sequential      0
+payment_type            0
+payment_installments    0
+payment_value           0
+dtype: int64
+--- payments.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for payments
+
+
+
+=======================================================     
+          DIAGNOSTICS FOR: REVIEWS
+=======================================================     
+
+--- 1. DATA TYPES & NON-NULL COUNTS (reviews.info) ---      
+<class 'pandas.DataFrame'>
+RangeIndex: 99223 entries, 0 to 99222
+Data columns (total 7 columns):
+ #   Column                   Non-Null Count  Dtype
+---  ------                   --------------  -----
+ 0   review_id                99223 non-null  str
+ 1   order_id                 99223 non-null  str
+ 2   review_score             99223 non-null  int64
+ 3   review_comment_title     99223 non-null  str
+ 4   review_comment_message   99223 non-null  str
+ 5   review_creation_date     99223 non-null  datetime64[us] 6   review_answer_timestamp  99223 non-null  datetime64[us]dtypes: datetime64[us](2), int64(1), str(4)
+memory usage: 5.3 MB
+--- reviews.info check complete ---
+
+--- 2. STATISTICAL SUMMARY (reviews.describe) ---
+       review_score  ...     review_answer_timestamp
+count  99223.000000  ...                       99223
+mean       4.086421  ...  2018-01-16 00:23:54.460558
+min        1.000000  ...         2016-10-07 18:32:28
+25%        4.000000  ...  2017-09-27 01:53:21.500000
+50%        5.000000  ...         2018-02-04 22:43:08
+75%        5.000000  ...         2018-05-20 12:11:27
+max        5.000000  ...         2018-10-29 12:27:35
+std        1.347586  ...                         NaN
+
+[8 rows x 3 columns]
+--- reviews.describe check complete ---
+
+--- 3. MISSING VALUES COUNT (reviews).isnull().sum() ---
+review_id                  0
+order_id                   0
+review_score               0
+review_comment_title       0
+review_comment_message     0
+review_creation_date       0
+review_answer_timestamp    0
+dtype: int64
+--- reviews.isnull().sum() check complete ---
+
+
+Process: Diagnostics fully complete for reviews
+
+
+Process 4/4 Complete: All diagnostics finished.
+
+--- SCRIPT EXECUTION FULLY COMPLETE ---
+
+
+
+
+=============================================================================
+👨‍💻 Author: Animesh Sanghi
+=============================================================================
+Title:    Data Analyst | MBA '28 (Analytics & Data Science) MUJ
+Phone:    9406570600
+Email:    animeshsanghi.da@gmail.com
+LinkedIn: https://www.linkedin.com/in/animeshsanghi-da/
+GitHub:   https://github.com/animeshsanghi-da
+=============================================================================
