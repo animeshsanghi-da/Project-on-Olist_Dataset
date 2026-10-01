@@ -205,10 +205,10 @@ The project extracts and evaluates key commercial and operational KPIs:
 * [Olist Official Website](https://olist.com/)
 
 ## Created By
-Name: Animesh Sanghi
-Profession: Data Analyst | MBA '28 (Analytics & Data Science) MUJ
-LinkedIn: linkedin.com/in/animeshsanghi-da
-GitHub: github.com/animeshsanghi-da
+Name: Animesh Sanghi  
+Profession: Data Analyst | MBA '28 (Analytics & Data Science) MUJ  
+LinkedIn: linkedin.com/in/animeshsanghi-da  
+GitHub: github.com/animeshsanghi-da  
 Email: animeshsanghi.da@gmail.com
 
 ## Project Status
